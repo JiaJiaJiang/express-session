@@ -596,8 +596,8 @@ function getcookie(req, name, secrets) {
 function hash(sess) {
   // serialize
   var str = JSON.stringify(sess, function (key, val) {
-    // ignore sess.cookie property
-    if (this === sess && key === 'cookie') {
+    // ignore sess.cookie's property except '_expires'
+    if (this === sess.cookie && key !== '_expires') {
       return
     }
 
