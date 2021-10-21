@@ -208,7 +208,6 @@ function session(options) {
     var originalHash;
     var originalId;
     var savedHash;
-    var touched = false
 
     // expose store
     req.sessionStore = store;
@@ -233,11 +232,6 @@ function session(options) {
         return;
       }
 
-      if (!touched) {
-        // touch session
-        req.session.touch()
-        touched = true
-      }
 
       // set cookie
       setcookie(res, name, req.sessionID, secrets[0], req.session.cookie.data);
@@ -325,11 +319,6 @@ function session(options) {
         return _end.call(res, chunk, encoding);
       }
 
-      if (!touched) {
-        // touch session
-        req.session.touch()
-        touched = true
-      }
 
       if (shouldSave(req)) {
         req.session.save(function onsave(err) {
@@ -337,19 +326,6 @@ function session(options) {
             defer(next, err);
           }
 
-          writeend();
-        });
-
-        return writetop();
-      } else if (storeImplementsTouch && shouldTouch(req)) {
-        // store implements touch method
-        debug('touching');
-        store.touch(req.sessionID, req.session, function ontouch(err) {
-          if (err) {
-            defer(next, err);
-          }
-
-          debug('touched');
           writeend();
         });
 
@@ -596,11 +572,10 @@ function getcookie(req, name, secrets) {
 function hash(sess) {
   // serialize
   var str = JSON.stringify(sess, function (key, val) {
-    // ignore sess.cookie's property except '_expires'
-    if (this === sess.cookie && key !== '_expires') {
-      return
+    // ignore sess.cookie property
+    if (this === sess && key === 'cookie') {
+      return {expires: +sess.cookie.expires}
     }
-
     return val
   })
 
