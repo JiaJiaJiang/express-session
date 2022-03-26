@@ -595,6 +595,11 @@ and other multi-core embedded devices).
 [connect-loki-url]: https://www.npmjs.com/package/connect-loki
 [connect-loki-image]: https://badgen.net/github/stars/Requarks/connect-loki?label=%E2%98%85
 
+[![★][connect-lowdb-image] connect-lowdb][connect-lowdb-url] A lowdb-based session store.
+
+[connect-lowdb-url]: https://www.npmjs.com/package/connect-lowdb
+[connect-lowdb-image]: https://badgen.net/github/stars/travishorn/connect-lowdb?label=%E2%98%85
+
 [![★][connect-memcached-image] connect-memcached][connect-memcached-url] A memcached-based session store.
 
 [connect-memcached-url]: https://www.npmjs.com/package/connect-memcached
@@ -630,6 +635,11 @@ and other multi-core embedded devices).
 
 [connect-mssql-v2-url]: https://www.npmjs.com/package/connect-mssql-v2
 [connect-mssql-v2-image]: https://badgen.net/github/stars/jluboff/connect-mssql-v2?label=%E2%98%85
+
+[![★][connect-neo4j-image] connect-neo4j][connect-neo4j-url] A [Neo4j](https://neo4j.com)-based session store.
+
+[connect-neo4j-url]: https://www.npmjs.com/package/connect-neo4j
+[connect-neo4j-image]: https://badgen.net/github/stars/MaxAndersson/connect-neo4j?label=%E2%98%85
 
 [![★][connect-pg-simple-image] connect-pg-simple][connect-pg-simple-url] A PostgreSQL-based session store.
 
