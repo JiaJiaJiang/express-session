@@ -574,7 +574,7 @@ function hash(sess) {
   var str = JSON.stringify(sess, function (key, val) {
     // ignore sess.cookie property
     if (this === sess && key === 'cookie') {
-      return {expires: +sess.cookie.expires}
+      return +sess.cookie.expires
     }
     return val
   })
